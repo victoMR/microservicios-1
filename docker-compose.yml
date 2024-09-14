@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db_data:/data/db
+
+  criptos:
+    build: ./criptos
+    ports:
+      - "3101:3001" # Cambia el puerto externo a 3101
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017/criptoDB
+
+  personas:
+    build: ./persons
+    ports:
+      - "3102:3002" # Cambia el puerto externo a 3102
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017/personasDB
+
+  productos:
+    build: ./productos
+    ports:
+      - "3103:3003" # Cambia el puerto externo a 3103
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017/productosDB

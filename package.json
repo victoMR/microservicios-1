@@ -1,0 +1,28 @@
+{
+  "name": "microservicios-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm-run-all build start:all",
+    "build": "docker-compose up --build",
+    "start:all": "concurrently \"nodemon .\\index.js\" \"nodemon .\\criptos\\index.js\" \"nodemon .\\persons\\index.js\" \"nodemon .\\productos\\index.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "expess": "^0.0.1-security",
+    "express": "^4.20.0",
+    "http-proxy-middleware": "^3.0.2",
+    "i": "^0.3.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
+    "npm": "^10.8.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
