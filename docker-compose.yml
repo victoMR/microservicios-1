@@ -11,7 +11,7 @@ services:
   criptos:
     build: ./criptos
     ports:
-      - "3101:3001" # Cambia el puerto externo a 3101
+      - "3101:3001" 
     depends_on:
       - mongo
     environment:
@@ -20,7 +20,7 @@ services:
   personas:
     build: ./persons
     ports:
-      - "3102:3002" # Cambia el puerto externo a 3102
+      - "3102:3002"
     depends_on:
       - mongo
     environment:
@@ -29,8 +29,18 @@ services:
   productos:
     build: ./productos
     ports:
-      - "3103:3003" # Cambia el puerto externo a 3103
+      - "3103:3003"
     depends_on:
       - mongo
     environment:
       MONGO_URI: mongodb://mongo:27017/productosDB
+    
+  pets:
+    build: ./pets
+    ports:
+      - "5100:5000"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017/petsDB
+
