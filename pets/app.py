@@ -18,11 +18,11 @@ print("Connected to MongoDB : " + mongo_uri)
 db = client.petsDB
 pets_collection = db.pets
 
+
 @app.route("/")
 def index():
     """
     Endpoint inicial que devuelve un mensaje de bienvenida.
-
     Returns:
         Response: Un mensaje de bienvenida en formato JSON.
     """
@@ -32,7 +32,6 @@ def index():
 def get_pets():
     """
     Obtener todas las mascotas.
-
     Returns:
         Response: Una lista de todas las mascotas en formato JSON.
     """
